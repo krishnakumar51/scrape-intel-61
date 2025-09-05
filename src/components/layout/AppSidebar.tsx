@@ -102,7 +102,7 @@ export function AppSidebar() {
                                   ? "bg-primary border-primary text-primary-foreground shadow-lg" 
                                   : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
                               }`
-                             : `flex items-center gap-3 w-full rounded-xl py-5 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                             : `flex items-center gap-3 w-full rounded-xl py-4 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
                                isActive 
                                  ? "bg-sidebar-accent text-sidebar-accent-foreground" 
                                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
@@ -120,7 +120,7 @@ export function AppSidebar() {
                         to={item.url} 
                         className={({ isActive }) => 
                           collapsed
-                            ? `flex items-center justify-center w-12 h-12 rounded-xl border-2 transition-all shadow-sm ${
+                            ? `flex items-center justify-center w-16 h-16 rounded-xl border-2 transition-all shadow-sm ${
                                 isActive 
                                   ? "bg-primary border-primary text-primary-foreground shadow-lg" 
                                   : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
@@ -134,9 +134,9 @@ export function AppSidebar() {
                         end
                         title={collapsed ? item.title : undefined}
                       >
-                        <item.icon className="shrink-0 transition-all h-7 w-7" />
+                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
                         {!collapsed && (
-                          <span className="text-lg font-semibold tracking-wide">{item.title}</span>
+                          <span className="text-base font-medium tracking-wide">{item.title}</span>
                         )}
                       </NavLink>
                   </SidebarMenuButton>
@@ -157,12 +157,12 @@ export function AppSidebar() {
                         to={item.url} 
                         className={({ isActive }) => 
                           collapsed 
-                            ? `flex items-center justify-center w-full h-16 rounded-xl border-2 transition-all shadow-sm ${
+                            ? `flex items-center justify-center w-full h-20 rounded-xl border-2 transition-all shadow-sm ${
                                 isActive 
                                   ? "bg-primary border-primary text-primary-foreground shadow-lg" 
                                   : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
                               }`
-                             : `flex items-center gap-3 w-full rounded-xl py-4 px-4 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                             : `flex items-center gap-3 w-full rounded-xl py-4 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
                                isActive 
                                  ? "bg-sidebar-accent text-sidebar-accent-foreground" 
                                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
@@ -170,9 +170,9 @@ export function AppSidebar() {
                         }
                         title={collapsed ? item.title : undefined}
                       >
-                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-7 w-7'}`} />
+                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
                         {!collapsed && (
-                          <span className="text-lg font-semibold tracking-wide">{item.title}</span>
+                          <span className="text-base font-medium tracking-wide">{item.title}</span>
                         )}
                       </NavLink>
                     </SidebarMenuButton>
@@ -184,9 +184,9 @@ export function AppSidebar() {
         </div>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-sidebar-border p-2">
+      <SidebarFooter className={`border-t border-sidebar-border ${collapsed ? 'p-4 flex justify-center' : 'p-2'}`}>
         {isAuthenticated ? (
-          <div className="flex items-center gap-2">
+          <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'}`}>
             <div className="w-8 h-8 bg-sidebar-accent rounded-full flex items-center justify-center">
               <User className="w-4 h-4 text-sidebar-accent-foreground" />
             </div>
@@ -198,7 +198,7 @@ export function AppSidebar() {
             )}
           </div>
         ) : (
-          <div className="flex items-center gap-2">
+          <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-2'}`}>
             <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center">
               <User className="w-4 h-4 text-muted-foreground" />
             </div>
