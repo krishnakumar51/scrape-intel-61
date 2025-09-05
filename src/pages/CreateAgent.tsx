@@ -53,7 +53,7 @@ export default function CreateAgent() {
     <MainLayout>
       {/* Page Heading */}
       <div className="text-center mb-16 mt-12">
-        <h1 className="text-6xl font-black bg-gradient-primary bg-clip-text text-transparent mb-4 tracking-tight">
+        <h1 className="text-6xl font-black bg-gradient-primary bg-clip-text text-transparent mb-4 tracking-tight font-heading">
           WebScraper AI
         </h1>
         <p className="text-muted-foreground text-lg max-w-md mx-auto">
@@ -62,7 +62,7 @@ export default function CreateAgent() {
       </div>
       
       {/* Main Form - Centered and Larger */}
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-2xl mx-auto">
         <Card className="bg-gradient-card/80 backdrop-blur-sm border-border/50 shadow-xl animate-fade-in">
           <CardHeader className="pb-6">
             <div className="flex items-center space-x-3">

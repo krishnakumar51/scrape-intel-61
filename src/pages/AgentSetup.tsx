@@ -102,7 +102,7 @@ export default function AgentSetup() {
 
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto h-[calc(100vh-4rem)] flex flex-col py-6">
+      <div className="max-w-4xl mx-auto flex flex-col py-6 min-h-[calc(100vh-4rem)]">
         {/* Progress Indicator - Enhanced */}
         <div className="mb-8 flex-shrink-0">
           <div className="flex justify-center items-center gap-4 text-base">
@@ -204,7 +204,7 @@ export default function AgentSetup() {
       </div>
 
         {/* Scraping Instructions - Compact */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 h-[35vh] flex flex-col">
+        <Card className="bg-card/40 backdrop-blur-sm border-border/40 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
           <CardHeader className="pb-4">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
@@ -216,44 +216,133 @@ export default function AgentSetup() {
               </div>
             </div>
           </CardHeader>
+
+          {/* <CardContent className="pt-0 w-full">
+  <div className="w-full flex flex-col items-stretch space-y-6">
+    <div className="w-full space-y-4">
+      <Label htmlFor="instructions" className="text-foreground font-medium text-base">
+        Instructions *
+      </Label>
+
+      <Textarea
+        id="instructions"
+        placeholder="Describe what data you want to extract, pagination requirements, specific fields to focus on, and quality standards..."
+        rows={5}
+        value={instructions}
+        onChange={(e) => setInstructions(e.target.value)}
+        maxLength={1000}
+        aria-invalid={!isFormValid}
+        aria-describedby="instructions-helper instructions-counter"
+        className="w-full bg-background/70 border-border/50 backdrop-blur-sm focus:bg-background focus:border-primary transition-all duration-200 resize-none text-sm min-h-[120px] box-border"
+      />
+
+      
+      <div className="w-full flex items-center justify-between mt-1 min-w-0">
+        <div id="instructions-helper" className="flex items-center gap-2 text-xs text-muted-foreground/80 leading-none min-w-0">
+          <span className="text-yellow-400 text-base flex-shrink-0">💡</span>
+          <span className="font-medium truncate min-w-0">Be detailed for best results</span>
+        </div>
+
+        <span
+          id="instructions-counter"
+          className={`text-xs flex-shrink-0 ${instructions.length > 800 ? "text-orange-400" : "text-muted-foreground/60"}`}
+        >
+          {instructions.length}/1000
+        </span>
+      </div>
+    </div>
+
+   
+    <div className="w-full">
+      <Button
+        className="w-full h-14 text-base font-semibold bg-gradient-primary hover:shadow-glow hover:scale-105 transition-all duration-300 text-white"
+        onClick={handleGenerateAgent}
+        aria-disabled={!isFormValid}
+        disabled={!isFormValid}
+      >
+        <Sparkles className="w-5 h-5 mr-3" />
+        Generate AI Agent
+        <ArrowRight className="w-5 h-5 ml-3" />
+      </Button>
+    </div>
+
+    {!isFormValid && (
+      <div className="w-full mt-3">
+        <p role="alert" className="text-sm text-red-500 text-center animate-fade-in">
+          Please enter a valid URL and scraping instructions to continue
+        </p>
+      </div>
+    )}
+  </div>
+</CardContent> */}
+
           <CardContent className="pt-0">
             <div className="space-y-6">
               <div className="space-y-4">
-                <Label htmlFor="instructions" className="text-foreground font-medium text-base">
+                <Label
+                  htmlFor="instructions"
+                  className="text-foreground font-medium text-base"
+                >
                   Instructions *
                 </Label>
+
                 <Textarea
                   id="instructions"
                   placeholder="Describe what data you want to extract, pagination requirements, specific fields to focus on, and quality standards..."
                   rows={5}
                   value={instructions}
                   onChange={(e) => setInstructions(e.target.value)}
-                  className="bg-background/70 border-border/50 backdrop-blur-sm focus:bg-background focus:border-primary transition-all duration-200 resize-none text-sm min-h-[120px] flex-1"
+                  maxLength={1000}
+                  aria-invalid={!isFormValid}
+                  aria-describedby="instructions-helper instructions-counter"
+                  className="bg-background/70 border-border/50 backdrop-blur-sm focus:bg-background focus:border-primary transition-all duration-200 resize-none text-sm min-h-[120px] w-full"
                 />
-                <div className="flex justify-between items-center text-sm text-muted-foreground">
-                  <span>💡 Be detailed for best results</span>
-                  <span className={`${instructions.length > 800 ? 'text-warning' : ''}`}>
+
+                {/* helper + counter row (kept tight under textarea) */}
+                <div className="flex items-center justify-between mt-1">
+                  <div
+                    id="instructions-helper"
+                    className="flex items-center gap-2 text-xs text-muted-foreground/80 leading-none"
+                  >
+                    <span className="text-yellow-400 text-base">💡</span>
+                    <span className="font-medium">Be detailed for best results</span>
+                  </div>
+
+                  <span
+                    id="instructions-counter"
+                    className={`text-xs ${
+                      instructions.length > 800 ? "text-orange-400" : "text-muted-foreground/60"
+                    }`}
+                  >
                     {instructions.length}/1000
                   </span>
                 </div>
               </div>
 
-              <Button 
+              <Button
                 className="w-full h-14 text-base font-semibold bg-gradient-primary hover:shadow-glow hover:scale-105 transition-all duration-300 text-white"
                 onClick={handleGenerateAgent}
+                aria-disabled={!isFormValid}
+                disabled={!isFormValid}
               >
                 <Sparkles className="w-5 h-5 mr-3" />
                 Generate AI Agent
                 <ArrowRight className="w-5 h-5 ml-3" />
               </Button>
 
-              {!isFormValid && (
-                <p className="text-sm text-muted-foreground text-center animate-fade-in">
-                  Please enter a valid URL and scraping instructions to continue
-                </p>
-              )}
+              {/* inline, accessible error message with spacing */}
+              {/* {!isFormValid && (
+                <div className="mt-3">
+                  <p
+                    role="alert"
+                    className="text-sm text-red-500 text-center animate-fade-in"
+                  >
+                    Please enter a valid URL and scraping instructions to continue
+                  </p>
+                </div>
+              )} */}
             </div>
-          </CardContent>
+          </CardContent>         
         </Card>
       </div>
     </MainLayout>

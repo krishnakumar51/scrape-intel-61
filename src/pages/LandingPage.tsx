@@ -110,11 +110,11 @@ export default function LandingPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1 className="text-5xl md:text-6xl font-black bg-gradient-primary bg-clip-text text-transparent mb-4 tracking-tight">
+        <h1 className="text-6xl md:text-7xl font-black bg-gradient-primary bg-clip-text text-transparent mb-4 tracking-tighter leading-none font-heading">
           WebScraper AI
         </h1>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Intelligent web scraping powered by artificial intelligence. Create custom agents, extract data seamlessly, and monitor your projects with advanced analytics.
+        <p className="text-muted-foreground text-xl max-w-xl mx-auto font-medium">
+          AI-powered web scraping. Create smart agents and extract data effortlessly.
         </p>
       </motion.div>
 
