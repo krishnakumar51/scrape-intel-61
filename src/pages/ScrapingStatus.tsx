@@ -279,71 +279,72 @@ export default function ScrapingStatus() {
 
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto h-[calc(100vh-6rem)] flex flex-col space-y-2 p-4">
-        {/* Centered Title */}
-        <div className="text-center flex-shrink-0 pb-1">
-          <h1 className="text-lg font-bold text-foreground">Scraping in Progress</h1>
+      <div className="max-w-6xl mx-auto h-[calc(100vh-6rem)] flex flex-col space-y-2 p-4">
+        {/* Centered Title - Enhanced */}
+        <div className="text-center flex-shrink-0 pb-3">
+          <h1 className="text-3xl font-bold text-foreground bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">Scraping in Progress</h1>
+          <p className="text-sm text-muted-foreground mt-1">Real-time monitoring and progress tracking</p>
         </div>
-        {/* Main Progress Card - Compact */}
+        {/* Main Progress Card - Enhanced */}
         <Card className="bg-gradient-card border-border flex-shrink-0">
-          <CardHeader className="pb-3">
+          <CardHeader className="pb-4">
             <div className="flex items-center justify-between">
               <div className="min-w-0 flex-1">
-                <CardTitle className="text-foreground flex items-center space-x-2 text-base">
-                  <Target className="w-4 h-4 text-primary" />
+                <CardTitle className="text-foreground flex items-center space-x-3 text-lg">
+                  <Target className="w-6 h-6 text-primary" />
                   <span className="truncate">{job.projectName}</span>
                 </CardTitle>
-                <CardDescription className="text-xs truncate">{job.targetUrl}</CardDescription>
+                <CardDescription className="text-sm truncate mt-1">{job.targetUrl}</CardDescription>
               </div>
               <div className="flex items-center space-x-2 ml-2">
-                <Badge className={`${getStatusColor()} text-white text-xs px-2 py-1`}>
+                <Badge className={`${getStatusColor()} text-white text-sm px-3 py-2`}>
                   {getStatusIcon()}
-                  <span className="ml-1 capitalize">{progress.status}</span>
+                  <span className="ml-2 capitalize">{progress.status}</span>
                 </Badge>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 pt-0">
+          <CardContent className="space-y-4 pt-0">
             {/* Progress Bar */}
-            <div className="space-y-1">
-              <div className="flex justify-between text-xs">
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Overall Progress</span>
-                <span className="text-foreground font-medium">
+                <span className="text-foreground font-medium text-base">
                   {progress.currentRecord} / {progress.totalRecords} records
                 </span>
               </div>
-              <Progress value={progressPercent} className="h-2" />
-              <div className="flex justify-between text-xs text-muted-foreground">
+              <Progress value={progressPercent} className="h-3" />
+              <div className="flex justify-between text-sm text-muted-foreground">
                 <span>{progressPercent.toFixed(1)}% Complete</span>
                 <span>Est. {progress.estimatedTimeRemaining} remaining</span>
               </div>
             </div>
 
             {/* Current Activity */}
-            <div className="flex items-center space-x-2 p-2 bg-muted/50 rounded-lg">
-              <Activity className="w-3 h-3 text-primary animate-spin" />
-              <span className="text-xs text-foreground">{progress.currentActivity}</span>
+            <div className="flex items-center space-x-3 p-3 bg-muted/50 rounded-lg">
+              <Activity className="w-4 h-4 text-primary animate-spin" />
+              <span className="text-sm text-foreground">{progress.currentActivity}</span>
             </div>
 
           </CardContent>
         </Card>
 
-        {/* Metrics Grid - Compact */}
-        <div className="grid grid-cols-3 gap-2 flex-shrink-0">
+        {/* Metrics Grid - Enhanced */}
+        <div className="grid grid-cols-3 gap-4 flex-shrink-0">
           <Card className="bg-gradient-card border-border">
-            <CardHeader className="pb-1 px-3 pt-2">
-              <CardTitle className="text-xs text-foreground">Quality</CardTitle>
+            <CardHeader className="pb-2 px-4 pt-3">
+              <CardTitle className="text-sm text-foreground">Quality</CardTitle>
             </CardHeader>
-            <CardContent className="py-1 px-3 space-y-1">
+            <CardContent className="py-2 px-4 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Accuracy</span>
-                <Badge variant="secondary" className="bg-success/20 text-success text-xs">
+                <span className="text-sm text-muted-foreground">Accuracy</span>
+                <Badge variant="secondary" className="bg-success/20 text-success text-sm">
                   {progress.accuracy.toFixed(1)}%
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Valid</span>
-                <Badge variant="secondary" className="bg-primary/20 text-primary text-xs">
+                <span className="text-sm text-muted-foreground">Valid</span>
+                <Badge variant="secondary" className="bg-primary/20 text-primary text-sm">
                   {Math.floor(progress.currentRecord * (progress.accuracy / 100))}
                 </Badge>
               </div>
@@ -351,19 +352,19 @@ export default function ScrapingStatus() {
           </Card>
 
           <Card className="bg-gradient-card border-border">
-            <CardHeader className="pb-1 px-3 pt-2">
-              <CardTitle className="text-xs text-foreground">Performance</CardTitle>
+            <CardHeader className="pb-2 px-4 pt-3">
+              <CardTitle className="text-sm text-foreground">Performance</CardTitle>
             </CardHeader>
-            <CardContent className="py-1 px-3 space-y-1">
+            <CardContent className="py-2 px-4 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Records/Min</span>
-                <Badge variant="secondary" className="bg-accent/20 text-accent text-xs">
+                <span className="text-sm text-muted-foreground">Records/Min</span>
+                <Badge variant="secondary" className="bg-accent/20 text-accent text-sm">
                   ~45
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Est. Total</span>
-                <Badge variant="secondary" className="bg-primary/20 text-primary text-xs">
+                <span className="text-sm text-muted-foreground">Est. Total</span>
+                <Badge variant="secondary" className="bg-primary/20 text-primary text-sm">
                   8:15
                 </Badge>
               </div>
@@ -371,19 +372,19 @@ export default function ScrapingStatus() {
           </Card>
 
           <Card className="bg-gradient-card border-border">
-            <CardHeader className="pb-1 px-3 pt-2">
-              <CardTitle className="text-xs text-foreground">Cost</CardTitle>
+            <CardHeader className="pb-2 px-4 pt-3">
+              <CardTitle className="text-sm text-foreground">Cost</CardTitle>
             </CardHeader>
-            <CardContent className="py-1 px-3 space-y-1">
+            <CardContent className="py-2 px-4 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Current</span>
-                <Badge variant="secondary" className="bg-success/20 text-success text-xs">
+                <span className="text-sm text-muted-foreground">Current</span>
+                <Badge variant="secondary" className="bg-success/20 text-success text-sm">
                   ${(progress.currentRecord * job.costData.perRecord).toFixed(2)}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Total Est</span>
-                <Badge variant="secondary" className="bg-primary/20 text-primary text-xs">
+                <span className="text-sm text-muted-foreground">Total Est</span>
+                <Badge variant="secondary" className="bg-primary/20 text-primary text-sm">
                   ${job.costData.totalCost.toFixed(2)}
                 </Badge>
               </div>
@@ -391,17 +392,17 @@ export default function ScrapingStatus() {
           </Card>
         </div>
 
-        {/* Live Progress Logs - Compact */}
+        {/* Live Progress Logs - Enhanced */}
         <Card className="bg-gradient-card border-border flex-1">
-          <CardHeader className="pb-2 flex-shrink-0 px-4 pt-3">
+          <CardHeader className="pb-3 flex-shrink-0 px-4 pt-4">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-primary/10 rounded-md flex items-center justify-center">
-                  <Database className="w-3 h-3 text-primary" />
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-primary/10 rounded-md flex items-center justify-center">
+                  <Database className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <CardTitle className="text-xs text-foreground">Live Processing Logs</CardTitle>
-                  <p className="text-xs text-muted-foreground">Real-time activity</p>
+                  <CardTitle className="text-sm text-foreground">Live Processing Logs</CardTitle>
+                  <p className="text-sm text-muted-foreground">Real-time activity</p>
                 </div>
               </div>
               <Button 
@@ -410,14 +411,14 @@ export default function ScrapingStatus() {
                 onClick={() => {
                   logsEndRef.current?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="text-xs h-6 px-2 bg-muted/50 hover:bg-muted"
+                className="text-sm h-8 px-3 bg-muted/50 hover:bg-muted"
               >
                 ↓ Latest
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="pb-2 px-4 flex-1">
-            <div className="h-48 border rounded-lg bg-background/80 backdrop-blur-sm overflow-hidden shadow-inner">
+          <CardContent className="px-2 pb-2 flex-1">
+            <div className="h-56 border-t bg-background/80 backdrop-blur-sm overflow-hidden">
               <ScrollArea 
                 className="h-full" 
                 data-logs-container="true"
@@ -432,7 +433,7 @@ export default function ScrapingStatus() {
                   }
                 }}
               >
-                <div className="p-4 space-y-2 font-mono text-xs">
+                <div className="p-3 space-y-1 font-mono text-sm">
                   {logs.map((log) => (
                     <div 
                       key={log.id} 
@@ -442,7 +443,7 @@ export default function ScrapingStatus() {
                         'bg-primary/5 border-l-2 border-primary/30'
                       } hover:bg-opacity-80`}
                     >
-                      <span className="text-muted-foreground/70 shrink-0 w-16 text-[10px] font-medium tracking-wide">
+                      <span className="text-muted-foreground/70 shrink-0 w-16 text-xs font-medium tracking-wide">
                         {log.timestamp}
                       </span>
                       <div className={`shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs ${
@@ -452,7 +453,7 @@ export default function ScrapingStatus() {
                       }`}>
                         {log.type === 'success' ? '✓' : log.type === 'error' ? '✗' : 'i'}
                       </div>
-                      <span className="text-foreground/90 break-words text-[11px] leading-relaxed flex-1">
+                      <span className="text-foreground/90 break-words text-xs leading-relaxed flex-1">
                         {log.message}
                       </span>
                     </div>
