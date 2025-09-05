@@ -200,8 +200,9 @@ export default function CompletedScraping() {
       <div className="p-6 max-w-6xl mx-auto">
         {/* Success Banner */}
         <div className="mb-6 text-center">
-          <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
-            <span className="font-bold text-foreground">Successfully extracted</span> {jobData.totalRecords} records from <span className="font-bold text-foreground">{jobData.targetUrl}</span> with <span className="font-bold text-success">{jobData.finalAccuracy}% accuracy</span> in {jobData.completionTime}.
+          <p className="text-muted-foreground max-w-3xl mx-auto text-lg flex items-center justify-center gap-3">
+            <CheckCircle className="w-6 h-6 text-success" />
+            <span className="font-bold text-foreground">Scraping completed successfully!</span> Extracted <span className="font-bold text-success">{jobData.totalRecords} records</span> with <span className="font-bold text-success">{jobData.finalAccuracy}% accuracy</span>.
           </p>
         </div>
 
