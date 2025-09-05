@@ -102,45 +102,45 @@ export default function AgentSetup() {
 
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto mt-4">
-        {/* Progress Indicator - Compact */}
-        <div className="mb-6">
-          <div className="flex justify-center items-center gap-3 text-sm">
-            <span className="flex items-center gap-2 text-primary">
-              <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+      <div className="max-w-4xl mx-auto h-[calc(100vh-4rem)] flex flex-col py-6">
+        {/* Progress Indicator - Enhanced */}
+        <div className="mb-8 flex-shrink-0">
+          <div className="flex justify-center items-center gap-4 text-base">
+            <span className="flex items-center gap-3 text-primary">
+              <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">✓</div>
               Details
             </span>
-            <div className="w-8 h-0.5 bg-primary"></div>
-            <span className="flex items-center gap-2 text-primary">
-              <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
+            <div className="w-12 h-0.5 bg-primary"></div>
+            <span className="flex items-center gap-3 text-primary">
+              <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
               Setup
             </span>
-            <div className="w-8 h-0.5 bg-muted"></div>
-            <span className="flex items-center gap-2 text-muted-foreground">
-              <div className="w-6 h-6 bg-muted text-muted-foreground rounded-full flex items-center justify-center text-xs font-bold">3</div>
+            <div className="w-12 h-0.5 bg-muted"></div>
+            <span className="flex items-center gap-3 text-muted-foreground">
+              <div className="w-8 h-8 bg-muted text-muted-foreground rounded-full flex items-center justify-center text-sm font-bold">3</div>
               Start
             </span>
           </div>
         </div>
 
-        {/* Setup Cards Grid - Compact Version */}
-        <div className="grid lg:grid-cols-2 gap-4 mb-4">
-        {/* Target Website - Compact */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="pb-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
-                <Globe className="w-4 h-4 text-primary" />
+        {/* Setup Cards Grid - Smaller Heights */}
+        <div className="grid lg:grid-cols-2 gap-6 mb-6 h-[30vh]">
+        {/* Target Website - Enhanced */}
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+          <CardHeader className="pb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                <Globe className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-foreground text-base">Target Website</CardTitle>
-                <CardDescription className="text-xs">Website to scrape</CardDescription>
+                <CardTitle className="text-foreground text-lg">Target Website</CardTitle>
+                <CardDescription className="text-sm">Website to scrape</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="pt-0">
-            <div className="space-y-3">
-              <Label htmlFor="target-url" className="text-foreground font-medium text-sm">
+          <CardContent className="pt-0 flex-1 flex flex-col">
+            <div className="space-y-4 flex-1">
+              <Label htmlFor="target-url" className="text-foreground font-medium text-base">
                 Website URL *
               </Label>
               <div className="relative">
@@ -150,7 +150,7 @@ export default function AgentSetup() {
                   placeholder="https://example.com"
                   value={targetUrl}
                   onChange={handleUrlChange}
-                  className={`bg-background/70 backdrop-blur-sm h-10 pr-10 transition-all duration-200 ${
+                  className={`bg-background/70 backdrop-blur-sm h-12 pr-12 text-base transition-all duration-200 ${
                     isValidUrl === false ? 'border-destructive focus:border-destructive' : 
                     isValidUrl === true ? 'border-green-500 focus:border-green-500' : 'border-border/50 focus:border-primary'
                   }`}
@@ -162,38 +162,38 @@ export default function AgentSetup() {
                 )}
               </div>
               {isValidUrl === false && (
-                <p className="text-xs text-destructive animate-fade-in">Please enter a valid URL</p>
+                <p className="text-sm text-destructive animate-fade-in">Please enter a valid URL</p>
               )}
             </div>
           </CardContent>
         </Card>
 
-        {/* Video Upload - Compact */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="pb-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
-                <FileVideo className="w-4 h-4 text-primary" />
+        {/* Video Upload - Enhanced */}
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+          <CardHeader className="pb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                <FileVideo className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-foreground text-base">Training Video</CardTitle>
-                <CardDescription className="text-xs">Demo video (Optional)</CardDescription>
+                <CardTitle className="text-foreground text-lg">Training Video</CardTitle>
+                <CardDescription className="text-sm">Demo video (Optional)</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="pt-0">
-            <div className="bg-background/30 border-2 border-dashed border-border rounded-lg p-4 text-center hover:border-primary/60 transition-all duration-300 cursor-pointer">
+          <CardContent className="pt-0 flex-1 flex flex-col">
+            <div className="bg-background/30 border-2 border-dashed border-border rounded-lg p-8 text-center hover:border-primary/60 transition-all duration-300 cursor-pointer flex-1 flex items-center justify-center">
               <input
                 type="file"
                 accept="video/*"
                 onChange={(e) => setUploadedVideo(e.target.files?.[0] || null)}
                 className="hidden"
-                id="video-upload-compact"
+                id="video-upload-enhanced"
               />
-              <label htmlFor="video-upload-compact" className="cursor-pointer">
-                <div className="flex flex-col items-center space-y-2">
-                  <FileVideo className="w-6 h-6 text-muted-foreground" />
-                  <div className="text-xs text-muted-foreground">
+              <label htmlFor="video-upload-enhanced" className="cursor-pointer">
+                <div className="flex flex-col items-center space-y-3">
+                  <FileVideo className="w-8 h-8 text-muted-foreground" />
+                  <div className="text-sm text-muted-foreground">
                     {uploadedVideo ? uploadedVideo.name : "Click to upload video"}
                   </div>
                 </div>
@@ -203,34 +203,34 @@ export default function AgentSetup() {
         </Card>
       </div>
 
-        {/* Instructions - Compact */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300">
-          <CardHeader className="pb-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center">
-                <MessageSquare className="w-4 h-4 text-primary" />
+        {/* Scraping Instructions - Compact */}
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 h-[35vh] flex flex-col">
+          <CardHeader className="pb-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                <MessageSquare className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-foreground text-base">Scraping Instructions</CardTitle>
-                <CardDescription className="text-xs">What data to extract and requirements</CardDescription>
+                <CardTitle className="text-foreground text-lg">Scraping Instructions</CardTitle>
+                <CardDescription className="text-sm">What data to extract and requirements</CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent className="pt-0">
-            <div className="space-y-4">
-              <div className="space-y-3">
-                <Label htmlFor="instructions" className="text-foreground font-medium text-sm">
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <Label htmlFor="instructions" className="text-foreground font-medium text-base">
                   Instructions *
                 </Label>
                 <Textarea
                   id="instructions"
                   placeholder="Describe what data you want to extract, pagination requirements, specific fields to focus on, and quality standards..."
-                  rows={3}
+                  rows={5}
                   value={instructions}
                   onChange={(e) => setInstructions(e.target.value)}
-                  className="bg-background/70 border-border/50 backdrop-blur-sm focus:bg-background focus:border-primary transition-all duration-200 resize-none text-sm"
+                  className="bg-background/70 border-border/50 backdrop-blur-sm focus:bg-background focus:border-primary transition-all duration-200 resize-none text-sm min-h-[120px] flex-1"
                 />
-                <div className="flex justify-between items-center text-xs text-muted-foreground">
+                <div className="flex justify-between items-center text-sm text-muted-foreground">
                   <span>💡 Be detailed for best results</span>
                   <span className={`${instructions.length > 800 ? 'text-warning' : ''}`}>
                     {instructions.length}/1000
@@ -239,16 +239,16 @@ export default function AgentSetup() {
               </div>
 
               <Button 
-                className="w-full h-10 text-sm font-semibold bg-gradient-primary hover:shadow-glow hover:scale-105 transition-all duration-300 text-white"
+                className="w-full h-14 text-base font-semibold bg-gradient-primary hover:shadow-glow hover:scale-105 transition-all duration-300 text-white"
                 onClick={handleGenerateAgent}
               >
-                <Sparkles className="w-4 h-4 mr-2" />
+                <Sparkles className="w-5 h-5 mr-3" />
                 Generate AI Agent
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-5 h-5 ml-3" />
               </Button>
 
               {!isFormValid && (
-                <p className="text-xs text-muted-foreground text-center animate-fade-in">
+                <p className="text-sm text-muted-foreground text-center animate-fade-in">
                   Please enter a valid URL and scraping instructions to continue
                 </p>
               )}
