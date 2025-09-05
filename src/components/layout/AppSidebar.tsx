@@ -61,23 +61,25 @@ export function AppSidebar() {
 
   return (
     <Sidebar
-      className={`border-r border-sidebar-border bg-sidebar backdrop-blur supports-[backdrop-filter]:bg-sidebar/95 transition-all duration-300 ${
-        collapsed ? "w-24" : "w-64"
-      }`}
+      className="border-r border-sidebar-border bg-sidebar backdrop-blur supports-[backdrop-filter]:bg-sidebar/95 transition-all duration-300"
       collapsible="icon"
     >
-      <SidebarHeader className="border-b border-sidebar-border p-3">
-        <div className="flex items-center gap-2">
-          <NavLink to="/" className="flex items-center gap-2">
+      <SidebarHeader className="border-b border-sidebar-border p-4">
+        <div className="flex items-center gap-3">
+          <NavLink to="/" className="flex items-center gap-3">
             <SidebarTrigger 
-              className="w-8 h-8 bg-gradient-primary rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-0"
+              className={`bg-gradient-primary rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-all p-0 ${
+                collapsed ? "w-10 h-10" : "w-10 h-10"
+              }`}
               title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
             >
-              <Sparkles className="w-4 h-4 text-white" />
+              <Sparkles className={`text-white transition-all ${
+                collapsed ? "w-5 h-5" : "w-5 h-5"
+              }`} />
             </SidebarTrigger>
             {!collapsed && (
               <div className="min-w-0 flex-1">
-                <h2 className="text-sm font-semibold text-sidebar-foreground truncate hover:text-primary transition-colors cursor-pointer">ScrapeMaster</h2>
+                <h2 className="text-lg font-bold text-sidebar-foreground truncate hover:text-primary transition-colors cursor-pointer tracking-wide">ScrapeMaster</h2>
               </div>
             )}
           </NavLink>
@@ -87,33 +89,56 @@ export function AppSidebar() {
       <SidebarContent className="px-2 py-3">
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-2">
+            <SidebarMenu className={`${collapsed ? 'space-y-4' : 'space-y-2'}`}>
               {visibleMainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="w-full p-0">
-                    <NavLink 
+                    {/* <NavLink 
                       to={item.url} 
                       className={({ isActive }) => 
                         collapsed 
-                          ? `flex items-center justify-center w-full h-14 rounded-lg border-2 transition-all ${
-                              isActive 
-                                ? "bg-primary border-primary text-primary-foreground shadow-md" 
-                                : "bg-sidebar-accent/30 border-sidebar-border text-sidebar-foreground hover:bg-primary/10 hover:border-primary/30 hover:text-primary"
-                            }`
-                           : `flex items-center gap-4 w-full rounded-lg py-3 px-4 transition-all hover:bg-sidebar-accent text-left ${
-                             isActive 
-                               ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                               : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
-                           }`
+                            ? `flex items-center justify-center w-full h-25 rounded-xl border-2 transition-all shadow-sm ${
+                                isActive 
+                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
+                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
+                              }`
+                             : `flex items-center gap-3 w-full rounded-xl py-5 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                               isActive 
+                                 ? "bg-sidebar-accent text-sidebar-accent-foreground" 
+                                 : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
+                             }`
                       }
                       end
                       title={collapsed ? item.title : undefined}
                     >
-                      <item.icon className={`shrink-0 ${collapsed ? 'h-6 w-6' : 'h-5 w-5'}`} />
+                      <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-7 w-7'}`} />
                       {!collapsed && (
-                        <span className="text-sm font-medium">{item.title}</span>
+                        <span className="text-lg font-semibold tracking-wide">{item.title}</span>
                       )}
-                    </NavLink>
+                    </NavLink> */}
+                    <NavLink 
+                        to={item.url} 
+                        className={({ isActive }) => 
+                          collapsed
+                            ? `flex items-center justify-center w-12 h-12 rounded-xl border-2 transition-all shadow-sm ${
+                                isActive 
+                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
+                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
+                              }`
+                            : `flex items-center gap-3 w-full rounded-xl py-5 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                                isActive 
+                                  ? "bg-sidebar-accent text-sidebar-accent-foreground" 
+                                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
+                              }`
+                        }
+                        end
+                        title={collapsed ? item.title : undefined}
+                      >
+                        <item.icon className="shrink-0 transition-all h-7 w-7" />
+                        {!collapsed && (
+                          <span className="text-lg font-semibold tracking-wide">{item.title}</span>
+                        )}
+                      </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -124,7 +149,7 @@ export function AppSidebar() {
         <div className="mt-auto">
           <SidebarGroup>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
+              <SidebarMenu className={`${collapsed ? 'space-y-4' : 'space-y-2'}`}>
                 {visibleSupportItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild className="w-full p-0">
@@ -132,12 +157,12 @@ export function AppSidebar() {
                         to={item.url} 
                         className={({ isActive }) => 
                           collapsed 
-                            ? `flex items-center justify-center w-full h-14 rounded-lg border-2 transition-all ${
+                            ? `flex items-center justify-center w-full h-16 rounded-xl border-2 transition-all shadow-sm ${
                                 isActive 
-                                  ? "bg-primary border-primary text-primary-foreground shadow-md" 
-                                  : "bg-sidebar-accent/30 border-sidebar-border text-sidebar-foreground hover:bg-primary/10 hover:border-primary/30 hover:text-primary"
+                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
+                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
                               }`
-                             : `flex items-center gap-4 w-full rounded-lg py-3 px-4 transition-all hover:bg-sidebar-accent text-left ${
+                             : `flex items-center gap-3 w-full rounded-xl py-4 px-4 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
                                isActive 
                                  ? "bg-sidebar-accent text-sidebar-accent-foreground" 
                                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
@@ -145,9 +170,9 @@ export function AppSidebar() {
                         }
                         title={collapsed ? item.title : undefined}
                       >
-                        <item.icon className={`shrink-0 ${collapsed ? 'h-6 w-6' : 'h-5 w-5'}`} />
+                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-7 w-7'}`} />
                         {!collapsed && (
-                          <span className="text-sm font-medium">{item.title}</span>
+                          <span className="text-lg font-semibold tracking-wide">{item.title}</span>
                         )}
                       </NavLink>
                     </SidebarMenuButton>
