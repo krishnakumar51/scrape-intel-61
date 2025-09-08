@@ -66,23 +66,21 @@ export function AppSidebar() {
     >
       <SidebarHeader className="border-b border-sidebar-border p-4">
         <div className="flex items-center gap-3">
-          <NavLink to="/" className="flex items-center gap-3">
-            <SidebarTrigger 
-              className={`bg-gradient-primary rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-all p-0 ${
-                collapsed ? "w-10 h-10" : "w-10 h-10"
-              }`}
-              title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
-            >
-              <Sparkles className={`text-white transition-all ${
-                collapsed ? "w-5 h-5" : "w-5 h-5"
-              }`} />
-            </SidebarTrigger>
-            {!collapsed && (
-              <div className="min-w-0 flex-1">
-                <h2 className="text-lg font-bold text-sidebar-foreground truncate hover:text-primary transition-colors cursor-pointer tracking-wide">ScrapeMaster</h2>
-              </div>
-            )}
-          </NavLink>
+          <SidebarTrigger 
+            className={`bg-gradient-primary rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-all p-0 ${
+              collapsed ? "w-10 h-10" : "w-10 h-10"
+            }`}
+            title={collapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+          >
+            <Sparkles className={`text-white transition-all ${
+              collapsed ? "w-5 h-5" : "w-5 h-5"
+            }`} />
+          </SidebarTrigger>
+          {!collapsed && (
+            <NavLink to="/" className="min-w-0 flex-1">
+              <h2 className="text-lg font-bold text-sidebar-foreground truncate hover:text-primary transition-colors cursor-pointer tracking-wide">ScrapeMaster</h2>
+            </NavLink>
+          )}
         </div>
       </SidebarHeader>
 
