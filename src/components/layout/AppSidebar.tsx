@@ -90,54 +90,30 @@ export function AppSidebar() {
             <SidebarMenu className={`${collapsed ? 'space-y-4' : 'space-y-2'}`}>
               {visibleMainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild className="w-full p-0">
-                    {/* <NavLink 
-                      to={item.url} 
-                      className={({ isActive }) => 
-                        collapsed 
-                            ? `flex items-center justify-center w-full h-25 rounded-xl border-2 transition-all shadow-sm ${
-                                isActive 
-                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
-                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
-                              }`
-                             : `flex items-center gap-3 w-full rounded-xl py-4 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
-                               isActive 
-                                 ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                                 : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
-                             }`
-                      }
-                      end
-                      title={collapsed ? item.title : undefined}
-                    >
-                      <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-7 w-7'}`} />
-                      {!collapsed && (
-                        <span className="text-lg font-semibold tracking-wide">{item.title}</span>
-                      )}
-                    </NavLink> */}
-                    <NavLink 
-                        to={item.url} 
-                        className={({ isActive }) => 
-                          collapsed
-                            ? `flex items-center justify-center w-16 h-16 rounded-xl border-2 transition-all shadow-sm ${
-                                isActive 
-                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
-                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
-                              }`
-                            : `flex items-center gap-3 w-full rounded-xl py-5 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
-                                isActive 
-                                  ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
-                              }`
-                        }
-                        end
-                        title={collapsed ? item.title : undefined}
-                      >
-                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
-                        {!collapsed && (
-                          <span className="text-base font-medium tracking-wide">{item.title}</span>
-                        )}
-                      </NavLink>
-                  </SidebarMenuButton>
+                  <NavLink 
+                    to={item.url} 
+                    className={({ isActive }) => 
+                      collapsed
+                        ? `flex items-center justify-center w-16 h-16 rounded-xl border-2 transition-all shadow-sm ${
+                            isActive 
+                              ? "bg-primary border-primary text-primary-foreground shadow-lg" 
+                              : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
+                          }`
+                        : `flex items-center gap-3 w-full rounded-xl py-5 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                            isActive 
+                              ? "bg-sidebar-accent text-sidebar-accent-foreground" 
+                              : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
+                          }`
+                    }
+                    end
+                    title={collapsed ? item.title : undefined}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
+                    {!collapsed && (
+                      <span className="text-base font-medium tracking-wide">{item.title}</span>
+                    )}
+                  </NavLink>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -150,30 +126,29 @@ export function AppSidebar() {
               <SidebarMenu className={`${collapsed ? 'space-y-4' : 'space-y-2'}`}>
                 {visibleSupportItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild className="w-full p-0">
-                      <NavLink 
-                        to={item.url} 
-                        className={({ isActive }) => 
-                          collapsed 
-                            ? `flex items-center justify-center w-full h-20 rounded-xl border-2 transition-all shadow-sm ${
-                                isActive 
-                                  ? "bg-primary border-primary text-primary-foreground shadow-lg" 
-                                  : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
-                              }`
-                             : `flex items-center gap-3 w-full rounded-xl py-4 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
-                               isActive 
-                                 ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                                 : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
-                             }`
-                        }
-                        title={collapsed ? item.title : undefined}
-                      >
-                        <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
-                        {!collapsed && (
-                          <span className="text-base font-medium tracking-wide">{item.title}</span>
-                        )}
-                      </NavLink>
-                    </SidebarMenuButton>
+                    <NavLink 
+                      to={item.url} 
+                      className={({ isActive }) => 
+                        collapsed 
+                          ? `flex items-center justify-center w-full h-20 rounded-xl border-2 transition-all shadow-sm ${
+                              isActive 
+                                ? "bg-primary border-primary text-primary-foreground shadow-lg" 
+                                : "bg-sidebar-accent/40 border-sidebar-border text-sidebar-foreground hover:bg-primary/15 hover:border-primary/40 hover:text-primary hover:shadow-md"
+                            }`
+                           : `flex items-center gap-3 w-full rounded-xl py-4 px-5 transition-colors hover:bg-sidebar-accent justify-start text-left shadow-sm ${
+                             isActive 
+                               ? "bg-sidebar-accent text-sidebar-accent-foreground" 
+                               : "text-sidebar-foreground/70 hover:text-sidebar-foreground"
+                           }`
+                      }
+                      title={collapsed ? item.title : undefined}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <item.icon className={`shrink-0 transition-all ${collapsed ? 'h-6 w-6' : 'h-6 w-6'}`} />
+                      {!collapsed && (
+                        <span className="text-base font-medium tracking-wide">{item.title}</span>
+                      )}
+                    </NavLink>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
